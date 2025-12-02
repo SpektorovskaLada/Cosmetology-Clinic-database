@@ -1,6 +1,6 @@
 # 💅 Cosmetology Clinic Database
 
-This is a training database project for a cosmetology clinic, implemented in PostgreSQL.
+This is an educational project on developing a database for a cosmetology clinic, implemented in PostgreSQL.
 
 ## 🧐 Structure
 - **Clients** – information about clients
