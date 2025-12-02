@@ -1,37 +1,37 @@
 # 💅 Cosmetology Clinic Database
 
-Це навчальний проєкт бази даних для косметологічної клініки, реалізований у PostgreSQL.
+This is a training database project for a cosmetology clinic, implemented in PostgreSQL.
 
-## 🧐 Структура
-- **Clients** – інформація про клієнтів
-- **Doctors** – інформація про лікарів
-- **Services** – послуги клініки
-- **Call_requests** – заявки на консультацію
-- **Products** – перелік продукції, що використовується або пропонується клінікою
-- **Service_categories** – дозволяє групувати послуги за категоріями
-- **Records** – інформація про кожен запис на прийом
-- **Reviews** – містить тексти, рейтинги та дати публікацій, які клієнти залишають після процедур
-- **Used_products** – відображає, які саме косметичні товари були використані під час конкретного запису
-- **User** – базова для багатьох інших таблиць і дозволяє централізовано зберігати інформацію про учасників взаємодії з системою
+## 🧐 Structure
+- **Clients** – information about clients
+- **Doctors** – information about doctors
+- **Services** – clinic services
+- **Call_requests** – consultation requests
+- **Products** – list of products used or offered by the clinic
+- **Service_categories** – allows you to group services by categories
+- **Records** – information about each appointment
+- **Reviews** – contains texts, ratings and publication dates that clients leave after procedures
+- **Used_products** – displays which cosmetic products were used during a specific appointment
+- **User** – basic for many other tables and allows you to centrally store information about participants in interaction with the system
 
-## 😶‍🌫️ Тригери та функції
-- **update_last_modified + trg_update_user**  
-  Автоматично оновлює поле 'last_update' у таблиці користувачів при зміні даних. Дозволяє відслідковувати останню активність.  
+## 😶‍🌫️ Triggers and functions
+- **update_last_modified + trg_update_user**
+Automatically updates the 'last_update' field in the users table when data changes. Allows you to track the latest activity.
 
-- **set_request_date + trg_set_request_date**  
-  Використовується в таблиці 'call_requests'. При додаванні нового запиту автоматично встановлює поточну дату й час.  
+- **set_request_date + trg_set_request_date**
+Used in the 'call_requests' table. When adding a new request, it automatically sets the current date and time.
 
-- **deduct_product_quantity + trg_deduct_product_quantity**  
-  Використовується для контролю залишків товарів. При додаванні запису у 'used_products' кількість відповідного товару у 'products' автоматично зменшується.  
+- **deduct_product_quantity + trg_deduct_product_quantity**
+Used to control product balances. When adding a record to 'used_products', the quantity of the corresponding product in 'products' is automatically reduced.
 
-## 🤔 Уявлення (Views)
-- **view_record_summary**  
-  Об’єднує дані з 'records', 'clients', 'doctors', 'services'. Дає можливість зручно бачити: хто і коли записався, до якого лікаря, яку послугу обрав, статус і оплату.  
+## 🤔 Views
+- **view_record_summary**
+Combines data from 'records', 'clients', 'doctors', 'services'. Allows you to conveniently see: who and when made an appointment, to which doctor, which service was chosen, status and payment.
 
-- **view_reviews_detailed**  
-  Об’єднує 'reviews', 'records', 'clients', 'services'. Дозволяє аналізувати відгуки — бачити послугу, клієнта, текст відгуку та рейтинг.  
+- **view_reviews_detailed**
+Combines 'reviews', 'records', 'clients', 'services'. Allows you to analyze reviews - see the service, client, review text and rating.
 
-## 🙃 Як відновити базу
+## 🙃 How to restore the database
 ```bash
 createdb cosmetology_clinic
 psql -U postgres -d cosmetology_clinic -f cosmetology_clinic.sql
