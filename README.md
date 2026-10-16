@@ -1,4 +1,4 @@
-# 💅 # Cosmetology Clinic Database
+# 💅 Cosmetology Clinic Database
 
 A PostgreSQL database for a cosmetology clinic management system. The database supports client management, appointment scheduling, service and product catalogs, inventory tracking, callback requests, and customer reviews.
 
