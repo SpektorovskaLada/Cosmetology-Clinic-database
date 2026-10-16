@@ -1,38 +1,78 @@
-# 💅 Cosmetology Clinic Database
+# 💅 # Cosmetology Clinic Database
 
-This is an educational project on developing a database for a cosmetology clinic, implemented in PostgreSQL.
+A PostgreSQL database for a cosmetology clinic management system. The database supports client management, appointment scheduling, service and product catalogs, inventory tracking, callback requests, and customer reviews.
 
-## 🧐 Structure
-- **Clients** – information about clients
-- **Doctors** – information about doctors
-- **Services** – clinic services
-- **Call_requests** – consultation requests
-- **Products** – list of products used or offered by the clinic
-- **Service_categories** – allows you to group services by categories
-- **Records** – information about each appointment
-- **Reviews** – contains texts, ratings and publication dates that clients leave after procedures
-- **Used_products** – displays which cosmetic products were used during a specific appointment
-- **User** – basic for many other tables and allows you to centrally store information about participants in interaction with the system
+## Technologies
 
-## 😶‍🌫️ Triggers and functions
-- **update_last_modified + trg_update_user**
-Automatically updates the 'last_update' field in the users table when data changes. Allows you to track the latest activity.
+- **PostgreSQL** — relational database management system
+- **SQL** — schema definition, constraints, relationships, and views
+- **PL/pgSQL** — database functions and triggers
+- **Django database tables** — authentication, permissions, admin logs, and sessions
 
-- **set_request_date + trg_set_request_date**
-Used in the 'call_requests' table. When adding a new request, it automatically sets the current date and time.
+## Database Structure
 
-- **deduct_product_quantity + trg_deduct_product_quantity**
-Used to control product balances. When adding a record to 'used_products', the quantity of the corresponding product in 'products' is automatically reduced.
+The database includes the following application tables:
 
-## 🤔 Views
-- **view_record_summary**
-Combines data from 'records', 'clients', 'doctors', 'services'. Allows you to conveniently see: who and when made an appointment, to which doctor, which service was chosen, status and payment.
+| Table | Description |
+|---|---|
+| `user` | User-related records |
+| `client` | Client profiles and contact information |
+| `doctor` | Specialist profiles, qualifications, and experience |
+| `call_requests` | Callback requests submitted by users |
+| `service_categories` | Service categories and their hierarchy |
+| `services` | Available clinic services, prices, and durations |
+| `product_categories` | Product categories and their hierarchy |
+| `products` | Product catalog, prices, and stock quantities |
+| `records` | Appointment records, statuses, and payment information |
+| `used_products` | Products used during appointments |
+| `reviews` | Client reviews and ratings |
 
-- **view_reviews_detailed**
-Combines 'reviews', 'records', 'clients', 'services'. Allows you to analyze reviews - see the service, client, review text and rating.
+The dump also contains Django-related tables for authentication, permissions, administrative activity, migrations, and sessions.
 
-## 🙃 How to restore the database
-```bash
-createdb cosmetology_clinic
-psql -U postgres -d cosmetology_clinic -f cosmetology_clinic.sql
+## Database Features
+
+### Functions and Triggers
+
+The database implements three trigger functions:
+
+- `deduct_product_quantity()` — decreases product stock when a product usage record is inserted.
+- `set_request_date()` — automatically sets the date of a callback request.
+- `update_last_modified()` — updates the modification timestamp of a user record.
+
+Three triggers invoke these functions to automate database operations.
+
+### Views
+
+- `view_record_summary` — combines appointment information with client, specialist, and service details.
+- `view_reviews_detailed` — combines reviews with client and service information.
+
+### Integrity and Relationships
+
+The schema defines primary keys, foreign keys, unique constraints, check constraints, and indexes to support relational integrity and data retrieval.
+
+## Getting Started
+
+### Requirements
+
+- PostgreSQL
+- A PostgreSQL client, such as pgAdmin or `psql`
+
+### Restore the Database Schema
+
+1. Create a new, empty PostgreSQL database.
+2. Open the SQL file in pgAdmin's Query Tool or execute it using `psql`.
+3. Run the script against the newly created database.
+4. Verify that the tables, views, functions, triggers, and constraints have been created successfully.
+
+The SQL dump contains database definitions rather than application records. Django-specific tables are included in the schema.
+
+## Repository Contents
+
+- `cosmetology_clinic.sql` — SQL dump containing the database schema, functions, triggers, views, indexes, and constraints.
+- `README.md` — project overview and setup instructions.
+
+## Notes
+
+This repository documents the database component of a cosmetology clinic management project. It is intended for educational and portfolio purposes.
+The SQL dump should be tested against a compatible PostgreSQL installation before being used in a production environment.
 
