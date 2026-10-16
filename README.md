@@ -79,5 +79,5 @@ The SQL dump should be tested against a compatible PostgreSQL installation befor
 
 
 
-<img width="700" height="1280" alt="photo_2026-10-16_18-12-59" src="https://github.com/user-attachments/assets/c7fe68d6-599f-47bb-80bd-6611f285dc0f" />
+<img width="963" height="1280" alt="photo_2026-10-16_18-12-59" src="https://github.com/user-attachments/assets/c7fe68d6-599f-47bb-80bd-6611f285dc0f" />
 
