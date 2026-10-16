@@ -76,17 +76,24 @@ The SQL dump contains database definitions rather than application records. Djan
 This repository documents the database component of a cosmetology clinic management project. It is intended for educational and portfolio purposes.
 The SQL dump should be tested against a compatible PostgreSQL installation before being used in a production environment.
 
-## 🗄️ Database Architecture (ERD)
+---
 
-The system utilizes a relational PostgreSQL database schema that models core business entities (users, clients, doctors, services, appointments, reviews, and inventory) and their relationships.
+## 🗄️ Appendix: Database Architecture (ERD)
 
-### Core Entities:
-* **Client / Doctor / User** — User accounts, profiles, and role management.
-* **Services & Service_categories** — Catalog of clinic procedures and categories.
-* **Records** — Client appointment scheduling and status tracking.
-* **Products & Used_Products** — Inventory management and product usage during procedures.
-* **Reviews & Call_requests** — Customer feedback, ratings, and callback inquiries.
+<details>
+<summary><b>🔍 Click to view full Entity-Relationship Diagram (ERD)</b></summary>
 
+<br>
 
-<img width="963" height="1280" alt="photo_2026-10-16_18-12-59" src="https://github.com/user-attachments/assets/c7fe68d6-599f-47bb-80bd-6611f285dc0f" />
+The system utilizes a relational PostgreSQL database schema that models core business entities (users, clients, doctors, services, appointments, reviews, and inventory) and their relationships:
 
+<img width="963" height="1280" alt="photo_2026-10-16_18-12-59" src="[https://github.com/user-attachments/assets/c7fe68d6-599f-47bb-80bd-6611f285dc0f](https://github.com/user-attachments/assets/c7fe68d6-599f-47bb-80bd-6611f285dc0f)" />
+
+### Core Entities Overview:
+- **Client / Doctor / User** — User accounts, profiles, and role management.
+- **Services & Service_categories** — Catalog of clinic procedures and categories.
+- **Records** — Client appointment scheduling and status tracking.
+- **Products & Used_Products** — Inventory management and product usage during procedures.
+- **Reviews & Call_requests** — Customer feedback, ratings, and callback inquiries.
+
+</details>
